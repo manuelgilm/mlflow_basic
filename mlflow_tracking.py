@@ -1,13 +1,18 @@
 import os
 from random import random, randint
 import mlflow
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import make_classification
+from sklearn.tree import DecisionTreeClassifier
 
 if __name__ == "__main__":
-    # Log an artifact (output file)
-    with open("outputs/test.txt", "w") as f:
-        f.write("hello world!")
-    with open("outputs/test1.txt", "w") as f:
-        f.write("hello world from test 1!")
-    with open("outputs/test2.txt", "w") as f:
-        f.write("hello world from test 2!")                
-    mlflow.log_artifacts("outputs")
+    # make fake classification data
+    X, y = make_classification(n_classes=2)
+    x_train, x_test, y_train, y_test = train_test_split(X,y, test_size=0.25, random_state=1)
+    
+    # create a scikit learn model
+    clf = DecisionTreeClassifier()
+    clf.fit(x_train, y_train)
+    # Log a scikit learn model
+
+    mlflow.sklearn.log_model(clf,"sklearn_model")
