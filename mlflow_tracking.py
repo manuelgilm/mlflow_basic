@@ -3,11 +3,7 @@ from random import random, randint
 import mlflow
 
 if __name__ == "__main__":
-    # Log metrics using dictionary (key-value pair)
-    mlflow.log_metrics({
-        "metric_1":randint(0, 100),
-        "metric_2":randint(0, 100),
-        "metric_3":randint(0, 100),
-        "metric_4":randint(0, 100),
-    })
-    
+    # Log an artifact (output file)
+    with open("outputs/test.txt", "w") as f:
+        f.write("hello world!")
+    mlflow.log_artifacts("outputs")
