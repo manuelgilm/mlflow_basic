@@ -4,7 +4,7 @@ import mlflow
 
 if __name__ == "__main__":
     client = MlflowClient()
-    experiment_name = "experiment_2"
+    experiment_name = "Default"
     #get experiment
     experiment = client.get_experiment_by_name(experiment_name)
     #get experiment id from experiment
