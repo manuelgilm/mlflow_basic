@@ -1,4 +1,3 @@
-from unicodedata import name
 from mlflow.tracking import MlflowClient
 
 if __name__ == "__main__":
